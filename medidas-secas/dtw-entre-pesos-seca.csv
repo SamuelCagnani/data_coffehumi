@@ -1,0 +1,4 @@
+peso_a,peso_b,distancia_dtw,distancia_euclidiana,razao_dtw_euclidiana
+0,100,3.450735,7.063822,0.488508
+0,200,5.964965,14.521334,0.410773
+100,200,4.605353,11.277830,0.408355

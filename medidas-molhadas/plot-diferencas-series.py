@@ -192,28 +192,34 @@ def main() -> None:
         if a not in media_por_peso or b not in media_por_peso:
             raise SystemExit(f"Par ({a}, {b}) requer peso inexistente na pasta.")
 
-    fig, ax = plt.subplots(figsize=(11, 6))
-    cores = plt.cm.viridis(np.linspace(0.0, 0.9, max(len(pares), 2)))
+    n = len(pares)
+    fig, eixos = plt.subplots(
+        n, 1, figsize=(11, 2.0 * n), sharex=True, sharey=True
+    )
+    if n == 1:
+        eixos = [eixos]
+    cores = plt.cm.viridis(np.linspace(0.0, 0.9, max(n, 2)))
 
-    for cor, (a, b) in zip(cores, pares):
+    for eixo, cor, (a, b) in zip(eixos, cores, pares):
         diferenca = media_por_peso[a] - media_por_peso[b]
         rotulo = f"{rotulo_peso(a)} - {rotulo_peso(b)}"
-        ax.plot(grade, diferenca, color=cor, linewidth=1.8, label=rotulo)
+        eixo.plot(grade, diferenca, color=cor, linewidth=1.8)
+        eixo.axhline(0.0, color="black", linewidth=0.9, linestyle="--", alpha=0.7)
+        eixo.set_title(rotulo, fontsize=10)
+        eixo.set_ylabel("Dif. corrente (A)", fontsize=9)
+        eixo.grid(True, linestyle="--", alpha=0.4)
         print(
             f"  {rotulo:>16} | media {np.nanmean(diferenca):+5.2f} A | "
             f"faixa {np.nanmin(diferenca):+5.2f} a {np.nanmax(diferenca):+5.2f} A"
         )
 
     # --- 5) Acabamento e salvamento --------------------------------------
-    ax.axhline(0.0, color="black", linewidth=0.9, linestyle="--", alpha=0.7)
-    ax.set_title(
-        f"Diferenca ponto a ponto das medias - {nome_amigavel(PASTA)}"
+    eixos[-1].set_xlabel("Tempo decorrido (s)")
+    fig.suptitle(
+        f"Diferenca ponto a ponto das medias - {nome_amigavel(PASTA)}",
+        fontsize=13,
     )
-    ax.set_xlabel("Tempo decorrido (s)")
-    ax.set_ylabel("Diferenca de corrente (A)")
-    ax.grid(True, linestyle="--", alpha=0.4)
-    ax.legend(title="Diferenca", ncol=2, fontsize=9)
-    fig.tight_layout()
+    fig.tight_layout(rect=(0.0, 0.0, 1.0, 0.98))
 
     destino = PASTA / f"diferencas-series-{sufixo_figura(PASTA)}.png"
     fig.savefig(destino, dpi=DPI)

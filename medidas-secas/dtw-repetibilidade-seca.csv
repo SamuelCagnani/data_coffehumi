@@ -1,0 +1,17 @@
+peso,ensaio_a,ensaio_b,distancia_dtw
+0,0kgPedraSeca(2).csv,0kgPedraSeca(3).csv,1.967232
+0,0kgPedraSeca(2).csv,0kgPedraSeca(4).csv,1.378405
+0,0kgPedraSeca(2).csv,0kgPedraSeca(5).csv,1.923538
+0,0kgPedraSeca(2).csv,0kgPedraSeca.csv,1.646208
+0,0kgPedraSeca(3).csv,0kgPedraSeca(4).csv,1.587451
+0,0kgPedraSeca(3).csv,0kgPedraSeca(5).csv,1.385641
+0,0kgPedraSeca(3).csv,0kgPedraSeca.csv,1.994994
+0,0kgPedraSeca(4).csv,0kgPedraSeca(5).csv,1.486607
+0,0kgPedraSeca(4).csv,0kgPedraSeca.csv,1.910497
+0,0kgPedraSeca(5).csv,0kgPedraSeca.csv,2.022375
+100,100kgPedraSeca(2).csv,100kgPedraSeca(3).csv,1.462874
+100,100kgPedraSeca(2).csv,100kgPedraSeca.csv,1.529706
+100,100kgPedraSeca(3).csv,100kgPedraSeca.csv,1.797220
+200,200kgPedraSeca(2).csv,200kgPedraSeca(3).csv,2.901724
+200,200kgPedraSeca(2).csv,200kgPedraSeca.csv,1.913113
+200,200kgPedraSeca(3).csv,200kgPedraSeca.csv,2.949576
